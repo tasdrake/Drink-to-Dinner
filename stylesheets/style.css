@@ -1,0 +1,14 @@
+form div {
+  display: inline-block;
+}
+body {
+  height: 100vh;
+}
+.ingredientCard {
+  width: 12em;
+}
+
+.ingredientCard img {
+  height: 100px;
+  width: 100px;
+}

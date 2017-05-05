@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Drink to Recipe</title>
+
+  <!-- Stylesheets -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" href="stylesheets/style.css">
+
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+  <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="scripts/script.js"></script>
+</head>
+
+<body class="d-felx p-2">
+  <nav>
+
+  </nav>
+  <form class="drinkToPairing d-flex p-2 justify-content-center align-items-center" method="post">
+    <select class="drink custom-select" name="drink">
+      <option value="">---Select a Beer Type---</option>
+      <option value="crisp">Clean &amp; Crisp</option>
+      <option value="maltyFruity">Malty &amp; Fruity</option>
+      <option value="sour">Sour</option>
+      <option value="hoppyBitter">Hoppy &amp; Bitter</option>
+      <option value="dark">Dark</option>
+      <option value="belgian">Sweet Beligian</option>
+      <option value="maltySweet">Malty &amp; Sweet</option>
+      <option value="sweet">Barley Wine &amp; Lambic</option>
+    </select>
+      <div class="choicesFromDrink">
+        <div class="drinkPair">
+          <select class="crisp custom-select" name="crisp">
+            <option value="">---Select an Ingredient---</option>
+            <option value="brown rice">Brown Rice</option>
+            <option value="quinoa">Quinoa</option>
+            <option value="basmati rice">Basmati Rice</option>
+          </select>
+        </div>
+        <div class="drinkPair">
+          <select class="maltyFruity custom-select" name="maltyFruity">
+            <option value="">---Select an Ingredient---</option>
+            <option value="fava">Fava Beans</option>
+            <option value="chickpea">Chickpeas</option>
+            <option value="green bean">Green Beans</option>
+            <option value="clam">Clams</option>
+            <option value="scallop">Scallops</option>
+            <option value="shrimp">Shrimp</option>
+          </select>
+        </div>
+        <div class="drinkPair">
+          <select class="sour custom-select" name="sour">
+            <option value="">---Select an Ingredient---</option>
+            <option value="lamb">Lamb</option>
+            <option value="beef">Beef</option>
+            <option value="parsnip">Parsnips</option>
+            <option value="carrot">Carrots</option>
+            <option value="beet">Beets</option>
+          </select>
+        </div>
+        <div class="drinkPair">
+          <select class="hoppyBitter custom-select" name="hoppyBitter">
+            <option value="">---Select an Ingredient---</option>
+            <option value="duck">Duck</option>
+            <option value="quail">Quail</option>
+            <option value="chicken">Chicken</option>
+            <option value="brown rice">Brown Rice</option>
+            <option value="quinoa">Quinoa</option>
+            <option value="basmati rice">Basmati Rice</option>
+            <option value="butter">Butter</option>
+            <option value="olive oil">Olive Oil</option>
+            <option value="sausage">Sausages</option>
+            <option value="bacon">Bacon</option>
+            <option value="pork loin">Pork Loin</option>
+          </select>
+        </div>
+        <div class="drinkPair">
+          <select class="dark custom-select" name="dark">
+            <option value="">---Select an Ingredient---</option>
+            <option value="carrots">Carrots</option>
+            <option value="bell pepper">Bell Peppers</option>
+            <option value="mushroom">Mushrooms</option>
+            <option value="broccoli">Broccoli</option>
+            <option value="butter">Butter</option>
+            <option value="olive oil">Olive Oil</option>
+            <option value="dark chocolate">Dark Chocolate</option>
+            <option value="milk chocolate">Milk Chocolate</option>
+          </select>
+        </div>
+        <div class="drinkPair">
+          <select class="belgian custom-select" name="belgian">
+            <option value="">---Select an Ingredient---</option>
+            <option value="brie">Brie</option>
+            <option value="cheddar">Cheddar</option>
+            <option value="blue">Blue</option>
+            <option value="mozzarella">Mozzarella</option>
+            <option value="goat cheese">Goat Cheese</option>
+          </select>
+        </div>
+        <div class="drinkPair">
+          <select class="maltySweet custom-select" name="maltySweet">
+            <option value="">---Select an Ingredient---</option>
+            <option value="dark chocolate">Dark Chocolate</option>
+            <option value="milk chocolate">Milk Chocolate</option>
+          </select>
+        </div>
+        <div class="drinkPair">
+          <select class="fruitySweet custom-select" name="fruitySweet">
+            <option value="">---Select an Ingredient---</option>
+            <option value="sausage">Sausages</option>
+            <option value="bacon">Bacon</option>
+            <option value="pork loin">Pork Loin</option>
+          </select>
+        </div>
+        <div class="drinkPair">
+          <select class="sweet custom-select" name="sweet">
+            <option value="">---Select an Ingredient---</option>
+            <option value="cake">Cake</option>
+            <option value="ice cream">Ice Cream</option>
+          </select>
+        </div>
+      </div>
+    <button type="submit" name="button" class="btn btn-lg" id="drinkBtn">Submit</button>
+  </form>
+  <main>
+    <div class="container">
+      <div class="row" id="pairIngredients">
+
+
+      </div>
+    </div>
+  </main>
+  <footer>
+  </footer>
+</body>
+
+</html>
