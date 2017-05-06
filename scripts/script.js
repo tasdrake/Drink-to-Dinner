@@ -17,9 +17,17 @@ $(document).ready(function() {
     $('#drinkBtn').click(function(event) {
       event.preventDefault();
       $('#pairIngredients').html('');
+      //new
+      // if ($('#pairIngredientsSearch').attr('class') !== 'hidden') {
+      //   $('#pairIngredientsSearch').className('hidden');
+      // }
+      $('#pairIngredientsSearch').attr('class', 'hidden');
       const drink = $('.drink').val();
       const food = $('.' + drink).val();
       const id = beerFoodId[drink][food];
+      // $.getJSON('https://g-foodpairing.herokuapp.com/' + id + '/pairings?order=random', function(data) {
+      //   createIngredients(data);
+      // });
       $.ajax({
         url: 'https://api.foodpairing.com/ingredients/' + id + '/pairings?order=random',
         type: 'GET',
@@ -47,7 +55,7 @@ $(document).ready(function() {
       var ingredientName = data[i]._links.ingredient.name;
       if (ingredientName.includes('(')) {
         ingredientName = ingredientName.slice(0, (ingredientName.indexOf('(') - 1));
-      } else if (ingredientName.includes("'")) {
+        } else if (ingredientName.includes("'")) {
         ingredientName = ingredientName.slice(0, (ingredientName.indexOf("'") - 1));
       }
       const $cardTitle = $('<div class="card-header">' + ingredientName + '</div>');
@@ -57,18 +65,39 @@ $(document).ready(function() {
       $cardHead.append($cardTitle);
       $ingredientCard.append($cardHead);
       $ingredientCard.append($cardImageBox);
+
       $('#pairIngredients').append($ingredientCard);
+      $('#pairIngredientsSearch').toggleClass('hidden');
     }
 
   }
   function ingredientSelection() {
     $('#pairIngredients').click(function(event) {
-      const choice = $(event.target).parent().parent().children()[0].innerHTML;
-      if ($(event.target).parent().parent()) {
-
+      event.preventDefault();
+      var choice;
+      if ($(event.target).parent().parent().attr('class') === 'card text-center ingredientCard'){
+          $(event.target).parent().parent().toggleClass('card-inverse card-success');
+          choice = $(event.target).parent().parent().children()[0].innerText;
+        } else if ($(event.target).parent().parent().attr('class') === 'card text-center ingredientCard card-inverse card-success') {
+          $(event.target).parent().parent().toggleClass('card-inverse card-success');
+          choice = $(event.target).parent().parent().children()[0].innerText;
+        } else if ($(event.target).parent().attr('class') === 'card text-center ingredientCard card-inverse card-success') {
+          $(event.target).parent().toggleClass('card-inverse card-success');
+          choice = $(event.target).parent().children()[0].innerText;
+        } else if ($(event.target).parent().attr('class') === 'card text-center ingredientCard') {
+        $(event.target).parent().toggleClass('card-inverse card-success');
+        choice = $(event.target).parent().children()[0].innerText;
       }
-      $(event.target).parent().parent().toggleClass('card-inverse card-success mb-3');
-      console.log($(event.target).parent().parent());
+      if ($('#ingredientsSearch').val().includes(choice)) {
+        console.log('yes');
+      }
+      if ($('#ingredientsSearch').val()) {
+        $('#ingredientsSearch').val($('#ingredientsSearch').val() + ', ' + choice);
+      } else {
+        $('#ingredientsSearch').val(choice);
+      }
+      console.log(choice);
+      console.log($('#ingredientsSearch').val());
     });
 
   }

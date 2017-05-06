@@ -6,9 +6,14 @@ body {
 }
 .ingredientCard {
   width: 12em;
+  margin: 1px;
 }
 
 .ingredientCard img {
   height: 100px;
   width: 100px;
+}
+
+.hidden {
+  display: none;
 }
