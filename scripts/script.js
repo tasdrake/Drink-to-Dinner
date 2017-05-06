@@ -30,7 +30,7 @@ $(document).ready(function() {
         type: 'GET',
         dataType: 'json',
         headers: {
-          },
+        },
         contentType: 'application/json; charset=utf-8',
         success: function(data) {
           createIngredients(data);
@@ -40,7 +40,7 @@ $(document).ready(function() {
   }
   function createIngredients(data) {
     for (let i = 0; i < data.length; i++) {
-      const $cardHead = $('<div>')
+      const $cardHead = $('<div>');
       const $ingredientCard = $('<div class="card text-center ingredientCard">');
       const $cardImage = $('<img class="card-img-top center-text">');
       const $cardImageBox = $('<div class="card-block">');
@@ -75,7 +75,7 @@ $(document).ready(function() {
       const $oneParents = $(event.target).parent();
       const classes1 = 'card text-center ingredientCard';
       const classes2 = 'card text-center ingredientCard card-inverse card-success';
-      var choice;
+      let choice;
       if ($twoParents.attr('class') === classes1){
           $twoParents.toggleClass('card-inverse card-success');
           choice = $twoParents.children()[0].innerText;
@@ -106,23 +106,25 @@ $(document).ready(function() {
   function recipeSearch() {
     $('#recipeBtn').click(function(event) {
       event.preventDefault();
-      const search = $('#ingredientsSearch').val().split(', ').join('+');
-      $.getJSON('http://api.yummly.com/v1/api/recipes?' + search, data => createRecipes(data));
+      const search1 = $('#ingredientsSearch').val().split(', ').join('+');
+      const search2 = $('#ingredientsSearch').val().split(', ').join(',');
+      $.getJSON( + search1, data => createRecipes1(data));
+      $.getJSON( + search2, data => createRecipes2(data));
     });
   }
-  function createRecipes(data) {
+  function createRecipes1(data) {
     for (let i = 0; i < data.matches.length; i++) {
       const id = data.matches[i].id;
-      $.getJSON('http://api.yummly.com/v1/api/recipe/' + id + , recipeData => recipeInfo(recipeData));
+      $.getJSON(, recipeData => recipeInfo1(recipeData));
     }
   }
-  function recipeInfo(recipeData) {
+  function recipeInfo1(recipeData) {
     const $card = $('<div class="card recipeCard">');
     const image = recipeData.images[0].hostedLargeUrl;
     const $image = $('<img class="card-img-top center-text" src="' + image + '">');
-    const $cardBlock = $('<div class="card-block">');
+    const $cardBlock = $('<div class="card-block d-flex p-2 flex-column justify-content-between">');
     const recipeName = recipeData.name;
-    const $cardTitle = $('<h4 class="card-text">' + recipeName + '</h4>');
+    const $cardTitle = $('<h4 class="card-text">' + recipeName + '</h4><br>');
     const link = recipeData.source.sourceRecipeUrl;
     const $link = $('<a class="btn btn-primary" href="' + link + '" target="_blank">Go to Recipe</button>');
     //const link = recipeData.attribution.url;
@@ -134,7 +136,29 @@ $(document).ready(function() {
     $('#recipeList').append($card);
 
   }
+  function createRecipes2(data) {
+    for (let i = 0; i < data.recipes.length; i++) {
+      const id = data.recipes[i].recipe_id;
+      $.getJSON( + id, recipeData => recipeInfo2(recipeData));
+    }
+  }
 
+  function recipeInfo2(recipeData) {
+    const $card = $('<div class="card recipeCard f2f">');
+    const image = recipeData.recipe.image_url;
+    const $image = $('<img class="card-img-top center-text" src="' + image + '">');
+    const $cardBlock = $('<div class="card-block">');
+    const recipeName = recipeData.recipe.title;
+    const $cardTitle = $('<h4 class="card-text">' + recipeName + '</h4>');
+    const link = recipeData.recipe.source_url;
+    const $link = $('<a class="btn btn-primary" href="' + link + '" target="_blank">Go to Recipe</button>');
+    //const link = recipeData.attribution.url;
+    $cardBlock.append($cardTitle);
+    $cardBlock.append($link);
+    $card.append($image);
+    $card.append($cardBlock);
+    $('#recipeList').append($card);
+  }
 
   ///"https://static.yummly.co/api-logo.png" yummly logo
   const beerFoodId = {
