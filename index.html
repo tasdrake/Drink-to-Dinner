@@ -132,7 +132,7 @@
           </select>
         </div>
       </div>
-    <button type="submit" name="button" class="btn btn-lg" id="drinkBtn">Submit</button>
+    <button type="submit" class="btn btn-lg" id="drinkBtn">Search For Ingredients</button>
   </form>
   <main>
     <div class="container">
@@ -140,9 +140,14 @@
       </div>
       <div class="row">
         <div id="pairIngredientsSearch" class="hidden">
-          <form action="index.html" method="post">
-            <input id="ingredientsSearch" type="text" name="recipeSearch">
+          <form action="index.html" method="get">
+            <input id="ingredientsSearch" type="text" name="recipeSearch" class="from-control">
+            <button type="submit" class="btn btn-lg" id="recipeBtn">Search Recipes</button>
           </form>
+        </div>
+      </div>
+      <div class="row" id="recipeList">
+
         </div>
       </div>
     </div>

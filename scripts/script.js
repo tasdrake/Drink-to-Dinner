@@ -1,7 +1,8 @@
 $(document).ready(function() {
-  ingredientPairSearch();
   listChoice();
+  ingredientPairSearch();
   ingredientSelection();
+  recipeSearch();
 
   function listChoice() {
     $('.drink').change(function() {
@@ -17,24 +18,19 @@ $(document).ready(function() {
     $('#drinkBtn').click(function(event) {
       event.preventDefault();
       $('#pairIngredients').html('');
-      //new
-      // if ($('#pairIngredientsSearch').attr('class') !== 'hidden') {
-      //   $('#pairIngredientsSearch').className('hidden');
-      // }
+      $('#ingredientsSearch').val('');
       $('#pairIngredientsSearch').attr('class', 'hidden');
       const drink = $('.drink').val();
       const food = $('.' + drink).val();
       const id = beerFoodId[drink][food];
-      // $.getJSON('https://g-foodpairing.herokuapp.com/' + id + '/pairings?order=random', function(data) {
-      //   createIngredients(data);
-      // });
+      // $.getJSON('https://g-foodpairing.herokuapp.com/' + id + '/pairings?order=random', data => createIngredients(data));
+
       $.ajax({
         url: 'https://api.foodpairing.com/ingredients/' + id + '/pairings?order=random',
         type: 'GET',
         dataType: 'json',
         headers: {
-          
-        },
+          },
         contentType: 'application/json; charset=utf-8',
         success: function(data) {
           createIngredients(data);
@@ -52,7 +48,7 @@ $(document).ready(function() {
       const image = data[i]._links.ingredient._links.image.size_240;
       $cardImage.prop('src', image);
 
-      var ingredientName = data[i]._links.ingredient.name;
+      let ingredientName = data[i]._links.ingredient.name;
       if (ingredientName.includes('(')) {
         ingredientName = ingredientName.slice(0, (ingredientName.indexOf('(') - 1));
         } else if (ingredientName.includes("'")) {
@@ -74,36 +70,73 @@ $(document).ready(function() {
   function ingredientSelection() {
     $('#pairIngredients').click(function(event) {
       event.preventDefault();
+      const ingredient = $('#ingredientsSearch');
+      const $twoParents = $(event.target).parent().parent();
+      const $oneParents = $(event.target).parent();
+      const classes1 = 'card text-center ingredientCard';
+      const classes2 = 'card text-center ingredientCard card-inverse card-success';
       var choice;
-      if ($(event.target).parent().parent().attr('class') === 'card text-center ingredientCard'){
-          $(event.target).parent().parent().toggleClass('card-inverse card-success');
-          choice = $(event.target).parent().parent().children()[0].innerText;
-        } else if ($(event.target).parent().parent().attr('class') === 'card text-center ingredientCard card-inverse card-success') {
-          $(event.target).parent().parent().toggleClass('card-inverse card-success');
-          choice = $(event.target).parent().parent().children()[0].innerText;
-        } else if ($(event.target).parent().attr('class') === 'card text-center ingredientCard card-inverse card-success') {
-          $(event.target).parent().toggleClass('card-inverse card-success');
-          choice = $(event.target).parent().children()[0].innerText;
-        } else if ($(event.target).parent().attr('class') === 'card text-center ingredientCard') {
-        $(event.target).parent().toggleClass('card-inverse card-success');
-        choice = $(event.target).parent().children()[0].innerText;
+      if ($twoParents.attr('class') === classes1){
+          $twoParents.toggleClass('card-inverse card-success');
+          choice = $twoParents.children()[0].innerText;
+        } else if ($twoParents.attr('class') === classes2) {
+          $twoParents.toggleClass('card-inverse card-success');
+          choice = $twoParents.children()[0].innerText;
+        } else if ($oneParents.attr('class') === classes2) {
+          $oneParents.toggleClass('card-inverse card-success');
+          choice = $oneParents.children()[0].innerText;
+        } else if ($oneParents.attr('class') === classes1) {
+        $oneParents.toggleClass('card-inverse card-success');
+        choice = $oneParents.children()[0].innerText;
       }
-      if ($('#ingredientsSearch').val().includes(choice)) {
-        console.log('yes');
-      }
-      if ($('#ingredientsSearch').val()) {
-        $('#ingredientsSearch').val($('#ingredientsSearch').val() + ', ' + choice);
+
+      if (ingredient.val().includes(choice)) {
+        console.log(true);
+      } else if (ingredient.val()) {
+        ingredient.val(ingredient.val() + ', ' + choice);
       } else {
-        $('#ingredientsSearch').val(choice);
+        ingredient.val(choice);
       }
       console.log(choice);
-      console.log($('#ingredientsSearch').val());
+      console.log(ingredient.val());
+      console.log(ingredient.val().includes(choice));
     });
+
+  }
+  function recipeSearch() {
+    $('#recipeBtn').click(function(event) {
+      event.preventDefault();
+      const search = $('#ingredientsSearch').val().split(', ').join('+');
+      $.getJSON('http://api.yummly.com/v1/api/recipes?' + search, data => createRecipes(data));
+    });
+  }
+  function createRecipes(data) {
+    for (let i = 0; i < data.matches.length; i++) {
+      const id = data.matches[i].id;
+      $.getJSON('http://api.yummly.com/v1/api/recipe/' + id + , recipeData => recipeInfo(recipeData));
+    }
+  }
+  function recipeInfo(recipeData) {
+    const $card = $('<div class="card recipeCard">');
+    const image = recipeData.images[0].hostedLargeUrl;
+    const $image = $('<img class="card-img-top center-text" src="' + image + '">');
+    const $cardBlock = $('<div class="card-block">');
+    const recipeName = recipeData.name;
+    const $cardTitle = $('<h4 class="card-text">' + recipeName + '</h4>');
+    const link = recipeData.source.sourceRecipeUrl;
+    const $link = $('<a class="btn btn-primary" href="' + link + '" target="_blank">Go to Recipe</button>');
+    //const link = recipeData.attribution.url;
+    console.log($card);
+    $cardBlock.append($cardTitle);
+    $cardBlock.append($link);
+    $card.append($image);
+    $card.append($cardBlock);
+    $('#recipeList').append($card);
 
   }
 
 
-
+  ///"https://static.yummly.co/api-logo.png" yummly logo
   const beerFoodId = {
     crisp: {
       'brown rice': 4413,
@@ -171,7 +204,3 @@ $(document).ready(function() {
     }
   };
 });
-
-
-
-// .trigger('change')

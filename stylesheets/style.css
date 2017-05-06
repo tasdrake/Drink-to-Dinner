@@ -17,3 +17,8 @@ body {
 .hidden {
   display: none;
 }
+
+.recipeCard {
+  width: 16em;
+  margin: 1px;
+}
