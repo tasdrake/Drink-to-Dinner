@@ -14,12 +14,13 @@ $(document).ready(function() {
     }).trigger('change');
 
   }
+
   function ingredientPairSearch() {
     $('#drinkBtn').click(function(event) {
       event.preventDefault();
       $('#pairIngredients').html('');
       $('#ingredientsSearch').val('');
-      $('#pairIngredientsSearch').attr('class', 'hidden');
+      $('#pairIngredientsSearch').addClass('hidden');
       const drink = $('.drink').val();
       const food = $('.' + drink).val();
       const id = beerFoodId[drink][food];
@@ -33,12 +34,12 @@ $(document).ready(function() {
         },
         contentType: 'application/json; charset=utf-8',
         success: function(data) {
-          createIngredients(data);
+          createIngredients(data, food);
         }
       });
     });
   }
-  function createIngredients(data) {
+  function createIngredients(data, food) {
     for (let i = 0; i < data.length; i++) {
       const $cardHead = $('<div>');
       const $ingredientCard = $('<div class="card text-center ingredientCard">');
@@ -49,13 +50,14 @@ $(document).ready(function() {
       $cardImage.prop('src', image);
 
       let ingredientName = data[i]._links.ingredient.name;
-      if (ingredientName.includes('(')) {
-        ingredientName = ingredientName.slice(0, (ingredientName.indexOf('(') - 1));
-        } else if (ingredientName.includes("'")) {
-        ingredientName = ingredientName.slice(0, (ingredientName.indexOf("'") - 1));
+      if (ingredientName.includes("'")) {
+          ingredientName = ingredientName.slice(0, (ingredientName.indexOf("'") - 1));
+        } else if (ingredientName.includes('(')) {
+          ingredientName = ingredientName.slice(0, (ingredientName.indexOf('(') - 1));
+        } else if (ingredientName.includes('®')) {
+          ingredientName = ingredientName.slice(0, ingredientName.length - 1);
       }
       const $cardTitle = $('<div class="card-header">' + ingredientName + '</div>');
-
 
       $cardImageBox.append($cardImage);
       $cardHead.append($cardTitle);
@@ -63,13 +65,13 @@ $(document).ready(function() {
       $ingredientCard.append($cardImageBox);
 
       $('#pairIngredients').append($ingredientCard);
-      $('#pairIngredientsSearch').toggleClass('hidden');
+      $('#pairIngredientsSearch').removeClass('hidden');
+      $('#ingredientsSearch').val(food)
     }
-
   }
+
   function ingredientSelection() {
     $('#pairIngredients').click(function(event) {
-      event.preventDefault();
       const ingredient = $('#ingredientsSearch');
       const $twoParents = $(event.target).parent().parent();
       const $oneParents = $(event.target).parent();
@@ -91,11 +93,11 @@ $(document).ready(function() {
       }
 
       if (ingredient.val().includes(choice)) {
-        console.log(true);
-      } else if (ingredient.val()) {
-        ingredient.val(ingredient.val() + ', ' + choice);
-      } else {
-        ingredient.val(choice);
+          console.log(true);
+        } else if (ingredient.val()) {
+          ingredient.val(ingredient.val() + ', ' + choice);
+        } else {
+          ingredient.val(choice);
       }
       console.log(choice);
       console.log(ingredient.val());
@@ -106,17 +108,20 @@ $(document).ready(function() {
   function recipeSearch() {
     $('#recipeBtn').click(function(event) {
       event.preventDefault();
+      $('#recipeList').html('');
       const search1 = $('#ingredientsSearch').val().split(', ').join('+');
       const search2 = $('#ingredientsSearch').val().split(', ').join(',');
-      $.getJSON( + search1, data => createRecipes1(data));
-      $.getJSON( + search2, data => createRecipes2(data));
+      $.getJSON('' + search1, data => createRecipes1(data));
+      $.getJSON('' + search2, data => createRecipes2(data));
     });
   }
   function createRecipes1(data) {
+    $('footer').addClass('hidden');
     for (let i = 0; i < data.matches.length; i++) {
       const id = data.matches[i].id;
-      $.getJSON(, recipeData => recipeInfo1(recipeData));
+      $.getJSON('http://api.yummly.com/v1/api/recipe/' + id + '', recipeData => recipeInfo1(recipeData));
     }
+    $('footer').removeClass('hidden');
   }
   function recipeInfo1(recipeData) {
     const $card = $('<div class="card recipeCard">');
@@ -128,18 +133,16 @@ $(document).ready(function() {
     const link = recipeData.source.sourceRecipeUrl;
     const $link = $('<a class="btn btn-primary" href="' + link + '" target="_blank">Go to Recipe</button>');
     //const link = recipeData.attribution.url;
-    console.log($card);
     $cardBlock.append($cardTitle);
     $cardBlock.append($link);
     $card.append($image);
     $card.append($cardBlock);
     $('#recipeList').append($card);
-
   }
   function createRecipes2(data) {
     for (let i = 0; i < data.recipes.length; i++) {
       const id = data.recipes[i].recipe_id;
-      $.getJSON( + id, recipeData => recipeInfo2(recipeData));
+      $.getJSON('' + id, recipeData => recipeInfo2(recipeData));
     }
   }
 
@@ -152,7 +155,6 @@ $(document).ready(function() {
     const $cardTitle = $('<h4 class="card-text">' + recipeName + '</h4>');
     const link = recipeData.recipe.source_url;
     const $link = $('<a class="btn btn-primary" href="' + link + '" target="_blank">Go to Recipe</button>');
-    //const link = recipeData.attribution.url;
     $cardBlock.append($cardTitle);
     $cardBlock.append($link);
     $card.append($image);

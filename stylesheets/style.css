@@ -1,9 +1,24 @@
+/*
+ *
+ * Header
+ *
+ */
 form div {
   display: inline-block;
 }
-body {
+header {
   height: 100vh;
 }
+.hidden {
+  display: none;
+}
+
+
+/*
+ *
+ * Pairing Ingredients
+ *
+ */
 .ingredientCard {
   width: 12em;
   margin: 1px;
@@ -14,11 +29,23 @@ body {
   width: 100px;
 }
 
-.hidden {
-  display: none;
-}
-
+/*
+ *
+ * Recipes
+ *
+ */
 .recipeCard {
   width: 16em;
   margin: 1px;
+}
+
+/*
+ *
+ * Footer
+ *
+ */
+footer {
+  height: 60px;
+  line-height: 60px;
+  background-color: #f5f5f5;
 }

@@ -1,4 +1,4 @@
-const beerFoodId2 = {
+const beerFoodId1 = {
   'brown rice': 4413,
   'quinoa': 5835,
   'basmati rice': 4309,
@@ -39,7 +39,7 @@ const beerFoodId2 = {
 };
 
 
-const beerFoodId3 = {
+const beerFoodId2 = {
   crisp: {
     'brown rice': 4413,
     'quinoa': 5835,
@@ -105,4 +105,3 @@ const beerFoodId3 = {
     'cake': 1104
   }
 };
-exports.beerFoodId = beerFoodId;
