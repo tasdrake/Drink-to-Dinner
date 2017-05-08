@@ -1,16 +1,38 @@
 /*
  *
+ * Nav
+ *
+ */
+ .navbar {
+   background: #004056;
+ }
+
+/*
+ *
  * Header
  *
  */
 form div {
   display: inline-block;
 }
-header {
+header  {
   height: 100vh;
+  background-image: url(../images/splash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .hidden {
   display: none;
+}
+
+/*
+ *
+ * Body
+ *
+ */
+body {
+  background: rgba(201, 255, 213, 0.4);
 }
 
 
@@ -19,9 +41,10 @@ header {
  * Pairing Ingredients
  *
  */
+
 .ingredientCard {
   width: 12em;
-  margin: 1px;
+  margin: 5px;
 }
 
 .ingredientCard img {
@@ -29,6 +52,16 @@ header {
   width: 100px;
 }
 
+.navBarFix {
+  padding-top: 61px;
+}
+
+#pairIngredientsDiv {
+  background-image: url(../images/ingredients.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 /*
  *
  * Recipes
@@ -36,9 +69,24 @@ header {
  */
 .recipeCard {
   width: 16em;
-  margin: 1px;
+  margin: 13px;
+}
+.card-success {
+  background: #2C858D;
+  border-color: #2C858D;
 }
 
+.card-header {
+  background: #74CEB7;
+}
+
+#recipeDiv {
+  background-image: url(../images/table.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+}
 /*
  *
  * Footer
@@ -47,5 +95,78 @@ header {
 footer {
   height: 60px;
   line-height: 60px;
-  background-color: #f5f5f5;
+  background-color: #004056;
+  color: rgba(255,255,255,.5)
+}
+
+/*
+ *
+ * Button recolor
+ *
+ */
+.btn-outline-success {
+  color: #2C858D;
+  border-color: #2C858D;
+}
+.btn-outline-success:hover, .btn-outline-success:focus, .btn-outline-success:active, .btn-outline-success.active, .show > .btn-outline-success.dropdown-toggle, .btn-outline-success.focus{
+  background: #2C858D;
+  border-color: #2C858D;
+  color: #FFFFCB;
+}
+.btn-outline-success:focus, .btn-outline-success.focus {
+  -webkit-box-shadow: 0 0 0 2px rgba(44, 133, 142, 0.5);
+          box-shadow: 0 0 0 2px rgba(44, 133, 142, 0.5);
+}
+
+
+.btn-success {
+  color: #FFFFCB;
+  background: #2C858D;
+  border-color: #2C858D;
+}
+
+.btn-success:hover {
+  color: #FFFFCB;
+  background-color: #247178;
+  border-color: #317278;
+}
+
+.btn-success:focus, .btn-success.focus {
+  -webkit-box-shadow: 0 0 0 2px rgba(44, 133, 142, 0.5);
+          box-shadow: 0 0 0 2px rgba(44, 133, 142, 0.5)
+}
+
+.btn-success.disabled, .btn-success:disabled {
+  background-color: #2C858D;
+  border-color: #2C858D;
+}
+
+.btn-success:active, .btn-success.active,
+.show > .btn-success.dropdown-toggle {
+  color: #FFFFCB;
+  background-color: #247178;
+  background-image: none;
+  border-color: #317278;
+}
+
+.card-block a:focus, .card-block a:hover {
+  color: #cdcd90;
+}
+
+/*
+ *
+ * Fonts
+ *
+ */
+@font-face {
+  font-family: Biko;
+  src: url(../fonts/Biko_Regular.otf);
+}
+@font-face {
+  font-family: Chapaza;
+  src: url(../fonts/Chapaza.ttf);
+}
+
+nav, select, button, footer, #pairIngredients, #recipeList {
+  font-family: Biko, sans-serif;
 }
