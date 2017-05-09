@@ -33,6 +33,7 @@ $(document).ready(function() {
     $('#break1').html('');
     $('#break1').append('<br><br><br><br><br><br><br><br>');
     $('#pairIngredientsDiv').addClass('navBarFix');
+    $('#ingredientInstruction').removeClass('hidden');
     for (let i = 0; i < data.length; i++) {
       const $cardHead = $('<div>');
       const $ingredientCard = $('<div class="card text-center ingredientCard">');
