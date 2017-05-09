@@ -25,24 +25,14 @@ $(document).ready(function() {
       const drink = $('.drink').val();
       const food = $('.' + drink).val();
       const id = beerFoodId[drink][food];
-      // $.getJSON('https://g-foodpairing.herokuapp.com/' + id + '/pairings?order=random', data => createIngredients(data));
-
-      $.ajax({
-        url: 'https://api.foodpairing.com/ingredients/' + id + '/pairings?order=random',
-        type: 'GET',
-        dataType: 'json',
-        headers: {
-        },
-        contentType: 'application/json; charset=utf-8',
-        success: function(data) {
-          createIngredients(data, food);
-        }
-      });
+      $.getJSON('https://g-foodpairing.herokuapp.com/ingredients/' + id + '/pairings?order=random', data => createIngredients(data, food));
     });
   }
 
   function createIngredients(data, food) {
-    $('main').prepend('<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>');
+    $('#break1').html('');
+    $('#break1').append('<br><br><br><br><br><br><br><br>');
+    $('#pairIngredientsDiv').addClass('navBarFix');
     for (let i = 0; i < data.length; i++) {
       const $cardHead = $('<div>');
       const $ingredientCard = $('<div class="card text-center ingredientCard">');
@@ -54,12 +44,12 @@ $(document).ready(function() {
 
       let ingredientName = data[i]._links.ingredient.name;
       if (ingredientName.includes("'")) {
-        ingredientName = ingredientName.slice(0, (ingredientName.indexOf("'") - 1));
-      } else if (ingredientName.includes('(')) {
-        ingredientName = ingredientName.slice(0, (ingredientName.indexOf('(') - 1));
-      } else if (ingredientName.includes('®')) {
-        ingredientName = ingredientName.slice(0, ingredientName.length - 1);
-      }
+          ingredientName = ingredientName.slice(0, (ingredientName.indexOf("'") - 1));
+        } else if (ingredientName.includes('(')) {
+          ingredientName = ingredientName.slice(0, (ingredientName.indexOf('(') - 1));
+        } else if (ingredientName.includes('®')) {
+          ingredientName = ingredientName.slice(0, ingredientName.length - 1);
+        }
       const $cardTitle = $('<div class="card-header">' + ingredientName + '</div>');
 
       $cardImageBox.append($cardImage);
@@ -69,10 +59,9 @@ $(document).ready(function() {
 
       $('#pairIngredients').append($ingredientCard);
       $('#pairIngredientsSearch').removeClass('hidden');
-      $('#ingredientsSearch').val(food);
     }
-    location.hash = '#pairIngredients';
-    $('#pairIngredientsDiv').addClass('navBarFix');
+    $('#ingredientsSearch').val(food);
+    location.hash = '#pairIngredientsDiv';
     $('#pairIngredientsSearch').prepend('<br><br><br>');
     $('#pairIngredientsSearch').append('<br><br><br><br>')
 
@@ -87,25 +76,25 @@ $(document).ready(function() {
       const classes2 = 'card text-center ingredientCard card-inverse card-success';
       let choice;
       if ($twoParents.attr('class') === classes1) {
-        $twoParents.toggleClass('card-inverse card-success');
-        choice = $twoParents.children()[0].innerText;
-      } else if ($twoParents.attr('class') === classes2) {
-        $twoParents.toggleClass('card-inverse card-success');
-        choice = $twoParents.children()[0].innerText;
-      } else if ($oneParents.attr('class') === classes2) {
-        $oneParents.toggleClass('card-inverse card-success');
-        choice = $oneParents.children()[0].innerText;
-      } else if ($oneParents.attr('class') === classes1) {
-        $oneParents.toggleClass('card-inverse card-success');
-        choice = $oneParents.children()[0].innerText;
-      }
+          $twoParents.toggleClass('card-inverse card-success');
+          choice = $twoParents.children()[0].innerText;
+        } else if ($twoParents.attr('class') === classes2) {
+          $twoParents.toggleClass('card-inverse card-success');
+          choice = $twoParents.children()[0].innerText;
+        } else if ($oneParents.attr('class') === classes2) {
+          $oneParents.toggleClass('card-inverse card-success');
+          choice = $oneParents.children()[0].innerText;
+        } else if ($oneParents.attr('class') === classes1) {
+          $oneParents.toggleClass('card-inverse card-success');
+          choice = $oneParents.children()[0].innerText;
+        }
       if (ingredient.val().includes(choice.trim()) && ingredient.val().indexOf(choice.trim() !== 0)) {
-        ingredient.val(ingredient.val().split(', ').filter(element => element !== choice.trim()).join(', '));
-      } else if (ingredient.val()) {
-        ingredient.val(ingredient.val() + ', ' + choice);
-      } else {
-        ingredient.val(choice);
-      }
+          ingredient.val(ingredient.val().split(', ').filter(element => element !== choice.trim()).join(', '));
+        } else if (ingredient.val()) {
+          ingredient.val(ingredient.val() + ', ' + choice);
+        } else {
+          ingredient.val(choice);
+        }
     });
 
   }
@@ -113,25 +102,30 @@ $(document).ready(function() {
   function recipeSearch() {
     $('#recipeBtn').click(function(event) {
       event.preventDefault();
-      $('#recipeList').html('');
+      $('#recipeList1').html('');
+      $('#recipeList2').html('');
+      $('#break3').html('');
       const search1 = $('#ingredientsSearch').val().split(', ').join('+');
       const search2 = $('#ingredientsSearch').val().split(', ').join(',');
-      $.getJSON('' + search2, data2 => createRecipes2(data2));
-      $.getJSON('' + search1 + '&maxResult=12', data => createRecipes1(data));
+      $.getJSON('https://g-yummly.herokuapp.com/v1/api/recipes?&q=' + search1 + '&maxResult=16', data => createRecipes1(data));
+      $.getJSON('https://g-food2fork.herokuapp.com/api/search?&q=' + search2, data => createRecipes2(data));
     });
   }
 
   function createRecipes1(data) {
-    $('#recipeDiv').before('<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>');
+    $('#break2').html('');
+    $('#break2').append('<br><br><br><br><br><br><br><br>');
+    $('#recipeList1').addClass('navBarFix');
+
     for (let i = 0; i < data.matches.length; i++) {
       const id = data.matches[i].id;
-      $.getJSON('http://api.yummly.com/v1/api/recipe/' + id + '', recipeData => recipeInfo1(recipeData));
+      $.getJSON('https://g-yummly.herokuapp.com/v1/api/recipe/' + id, recipeData => recipeInfo1(recipeData));
     }
-    $('#recipeList').addClass('navBarFix');
-    $('footer').removeClass('hidden');
     setTimeout(function() {
-      location.hash = '#recipeList';
-    }, 3000);
+      location.hash = '#recipeList1';
+    }, 1000);
+    $('footer').removeClass('hidden');
+    $('.searchMore').removeClass('hidden');
   }
 
   function recipeInfo1(recipeData) {
@@ -148,33 +142,31 @@ $(document).ready(function() {
     $cardBlock.append($link);
     $card.append($image);
     $card.append($cardBlock);
-    $('#recipeList').append($card);
-
-
-
+    $('#recipeList1').append($card);
   }
 
-  function createRecipes2(data2) {
-    for (let i = 0; i < data2.recipes.length; i++) {
-      const id = data2.recipes[i].recipe_id;
-      $.getJSON('' + id, recipeData2 => recipeInfo2(recipeData2));
+  function createRecipes2(data) {
+    $('#break3').append('<br>');
+    for (let i = 0; i < data.recipes.length; i++) {
+      const id = data.recipes[i].recipe_id;
+      $.getJSON('https://g-food2fork.herokuapp.com/api/get?&rId=' + id, recipeData2 => recipeInfo2(recipeData2));
     }
   }
 
-  function recipeInfo2(recipeData2) {
-    const $card = $('<div class="card recipeCard f2f">');
-    const image = recipeData2.recipe.image_url;
+  function recipeInfo2(recipeData) {
+    const $card = $('<div class="card recipeCard">');
+    const image = recipeData.recipe.image_url;
     const $image = $('<img class="card-img-top center-text" src="' + image + '">');
-    const $cardBlock = $('<div class="card-block">');
-    const recipeName = recipeData2.recipe.title;
+    const $cardBlock = $('<div class="card-block d-flex p-2 flex-column justify-content-between">');
+    const recipeName = recipeData.recipe.title;
     const $cardTitle = $('<h4 class="card-text">' + recipeName + '</h4>');
-    const link = recipeData2.recipe.source_url;
+    const link = recipeData.recipe.source_url;
     const $link = $('<a class="btn btn-success" href="' + link + '" target="_blank">Go to Recipe</button>');
     $cardBlock.append($cardTitle);
     $cardBlock.append($link);
     $card.append($image);
     $card.append($cardBlock);
-    $('#recipeList').append($card);
+    $('#recipeList2').append($card);
   }
 
   // /"https://static.yummly.co/api-logo.png" yummly logo
@@ -218,7 +210,7 @@ $(document).ready(function() {
       'Olive Oil': 1408,
       'Carrots': 137,
       'Bell Peppers': 136,
-      'Mushroom': 4948,
+      'Mushrooms': 4948,
       'Broccoli': 4411,
       'Dark Chocolate': 1518,
       'Milk Chocolate': 1544
@@ -226,7 +218,7 @@ $(document).ready(function() {
     belgian: {
       'Brie': 1910,
       'Cheddar': 1727,
-      'Blue': 1751,
+      'Blue Cheese': 1751,
       'Mozzarella': 4935,
       'Goat Cheese': 4697
     },

@@ -80,12 +80,23 @@ body {
   background: #74CEB7;
 }
 
-#recipeDiv {
+#recipeDiv1 {
   background-image: url(../images/table.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+#recipeDiv2 {
+  background-image: url(../images/recipe4.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
+#recipeList1 img, #recipeList2 img{
+  max-width: 254px;
+  /*max-height: 240px;*/
+  max-height: 169px;
 }
 /*
  *
@@ -167,6 +178,6 @@ footer {
   src: url(../fonts/Chapaza.ttf);
 }
 
-nav, select, button, footer, #pairIngredients, #recipeList {
+nav, select, button, footer, #pairIngredients, #recipeList1, #recipeList2 {
   font-family: Biko, sans-serif;
 }
