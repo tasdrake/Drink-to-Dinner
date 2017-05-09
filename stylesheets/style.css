@@ -111,9 +111,35 @@ footer {
 
 /*
  *
- * Button recolor
+ * Modals
  *
  */
+
+iframe {
+  width: 100%;
+  height: 80vh;
+  border: none;
+}
+
+.modal-dialog {
+  height: 100vh;
+  width: 90%;
+}
+
+@media (min-width: 576px){
+  .modal-dialog {
+    max-width: 1000px;
+  }
+}
+
+.modal-content {
+  background: rgb(225, 243, 240);
+}
+ /*
+  *
+  * Button recolor
+  *
+  */
 .btn-outline-success {
   color: #2C858D;
   border-color: #2C858D;

@@ -4,6 +4,7 @@ $(document).ready(function() {
   ingredientPairSearch();
   ingredientSelection();
   recipeSearch();
+  recipeModals();
 
   function listChoice() {
     $('.drink').change(function() {
@@ -28,7 +29,6 @@ $(document).ready(function() {
       $.getJSON('https://g-foodpairing.herokuapp.com/ingredients/' + id + '/pairings?order=random', data => createIngredients(data, food));
     });
   }
-
   function createIngredients(data, food) {
     $('#break1').html('');
     $('#break1').append('<br><br><br><br><br><br><br><br>');
@@ -111,7 +111,6 @@ $(document).ready(function() {
       $.getJSON('https://g-food2fork.herokuapp.com/api/search?&q=' + search2, data => createRecipes2(data));
     });
   }
-
   function createRecipes1(data) {
     $('#break2').html('');
     $('#break2').append('<br><br><br><br><br><br><br><br>');
@@ -127,7 +126,6 @@ $(document).ready(function() {
     $('footer').removeClass('hidden');
     $('.searchMore').removeClass('hidden');
   }
-
   function recipeInfo1(recipeData) {
     const $card = $('<div class="card recipeCard">');
     const image = recipeData.images[0].hostedLargeUrl;
@@ -136,7 +134,7 @@ $(document).ready(function() {
     const recipeName = recipeData.name;
     const $cardTitle = $('<h4 class="card-text">' + recipeName + '</h4><br>');
     const link = recipeData.source.sourceRecipeUrl;
-    const $link = $('<a class="btn btn-success" href="' + link + '" target="_blank">Go to Recipe</button>');
+    const $link = $('<a class="btn btn-success" href="' + link + '" target="_blank" data-toggle="modal" data-target="#recipePopUp">Go to Recipe</button>');
     //const link = recipeData.attribution.url;
     $cardBlock.append($cardTitle);
     $cardBlock.append($link);
@@ -144,29 +142,45 @@ $(document).ready(function() {
     $card.append($cardBlock);
     $('#recipeList1').append($card);
   }
-
   function createRecipes2(data) {
     $('#break3').append('<br>');
     for (let i = 0; i < data.recipes.length; i++) {
-      const id = data.recipes[i].recipe_id;
-      $.getJSON('https://g-food2fork.herokuapp.com/api/get?&rId=' + id, recipeData2 => recipeInfo2(recipeData2));
+      recipeInfo2(data, i);
     }
   }
-
-  function recipeInfo2(recipeData) {
+  function recipeInfo2(data, i) {
     const $card = $('<div class="card recipeCard">');
-    const image = recipeData.recipe.image_url;
+    const image = data.recipes[i].image_url;
     const $image = $('<img class="card-img-top center-text" src="' + image + '">');
     const $cardBlock = $('<div class="card-block d-flex p-2 flex-column justify-content-between">');
-    const recipeName = recipeData.recipe.title;
+    const recipeName = data.recipes[i].title;
     const $cardTitle = $('<h4 class="card-text">' + recipeName + '</h4>');
-    const link = recipeData.recipe.source_url;
-    const $link = $('<a class="btn btn-success" href="' + link + '" target="_blank">Go to Recipe</button>');
+    const link = data.recipes[i].f2f_url;
+    // const link = data.recipes[i].source_url;
+    const $link = $('<a class="btn btn-success" href="' + link + '" target="_blank" data-toggle="modal" data-target="#recipePopUp">Go to Recipe</button>');
     $cardBlock.append($cardTitle);
     $cardBlock.append($link);
     $card.append($image);
     $card.append($cardBlock);
     $('#recipeList2').append($card);
+  }
+
+  function recipeModals() {
+    $('#recipeList1').click(function(event) {
+      if ($(event.target).hasClass('btn btn-success')) {
+        createModal(event);
+      }
+    });
+    $('#recipeList2').click(function(event) {
+      if ($(event.target).hasClass('btn btn-success')) {
+        createModal(event);
+        console.log('click');
+      }
+    });
+  }
+  function createModal(event) {
+    const url = $(event.target).prop('href');
+    $('#recipeIframe').attr('src', url);
   }
 
   // /"https://static.yummly.co/api-logo.png" yummly logo
