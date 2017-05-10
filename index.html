@@ -26,41 +26,41 @@
 <body id="top">
 
   <nav class="navbar navbar-toggleable-md navbar-inverse bg-faded fixed-top">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navToggle" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">Drink to Dinner</a>
 
-      <div class="collapse navbar-collapse" id="navToggle">
-        <ul class="nav navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#top">Ingredient Search</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#pairIngredientsDiv">Recipe Search</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#recipeDiv1">Recipes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">About Food Pairing</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navToggle" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand" href="index.html">Drink to Dinner</a>
+
+    <div class="collapse navbar-collapse" id="navToggle">
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#top">Ingredient Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#pairIngredientsDiv">Recipe Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#recipeDiv1">Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About Food Pairing</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
   <header class="d-flex align-items-center justify-content-center">
-    <div class="container d-flex align-items-center justify-content-center">
-
-      <div class="row">
-        <form class="drinkToPairing" method="get">
-          <select class="drink" name="drink" id="drinkChoice">
+    <div class="container">
+      <form class="drinkToPairing d-flex justify-content-around" method="get">
+        <select class="drink form-control" name="drink" id="drinkChoice">
             <option value="">---Beer or Wine---</option>
             <option value="beer">Beer</option>
             <option value="wine">Wine</option>
           </select>
-          <div class="beerAndWine">
-            <select class="beer beerSelect drinkType" name="beer">
+        <div class="beerAndWine">
+          <select class="beer beerSelect drinkType form-control" name="beer">
               <option value="">---Select a Beer Type---</option>
               <option value="crisp">Clean &amp; Crisp</option>
               <option value="maltyFruity">Malty &amp; Fruity</option>
@@ -70,178 +70,180 @@
               <option value="belgian">Sweet Beligian</option>
               <option value="maltySweet">Malty &amp; Sweet</option>
               <option value="sweet">Barley Wine &amp; Lambic</option>
-            </select>
-            <select class="wine wineSelect drinkType" name="wine">
-              <option value="">---Select a Wine Type---</option>
-              <option value="dryWhite">Dry White</option>
-              <option value="sweetWhite">Sweet White</option>
-              <option value="richWhite">Rich White</option>
-              <option value="lightRed">Light Red</option>
-              <option value="mediumRed">Medium Red</option>
-              <option value="boldRed">Bold Red</option>
-            </select>
-          </div>
-          <div class="choicesFromDrink">
-            <div class="beerPair">
-              <div class="drinkPair">
-                <select class="crisp beerSelect" name="crisp">
-                  <option value="">---Select an Ingredient---</option>
-                  <option value="Brown Rice">Brown Rice</option>
-                  <option value="Quinoa">Quinoa</option>
-                  <option value="Basmati Rice">Basmati Rice</option>
-                </select>
-              </div>
-              <div class="drinkPair">
-                <select class="maltyFruity beerSelect" name="maltyFruity">
-                  <option value="">---Select an Ingredient---</option>
-                  <option value="Fava Beans">Fava Beans</option>
-                  <option value="Chickpeas">Chickpeas</option>
-                  <option value="Green Beans">Green Beans</option>
-                  <option value="Clams">Clams</option>
-                  <option value="Scallops">Scallops</option>
-                  <option value="Lobster">Lobster</option>
-                  <option value="Shrimp">Shrimp</option>
-                </select>
-              </div>
-              <div class="drinkPair">
-                <select class="sour beerSelect" name="sour">
-                  <option value="">---Select an Ingredient---</option>
-                  <option value="Lamb">Lamb</option>
-                  <option value="Beef">Beef</option>
-                  <option value="Parsnips">Parsnips</option>
-                  <option value="Carrots">Carrots</option>
-                  <option value="Beets">Beets</option>
-                </select>
-              </div>
-              <div class="drinkPair">
-                <select class="hoppyBitter beerSelect" name="hoppyBitter">
-                  <option value="">---Select an Ingredient---</option>
-                  <option value="Duck">Duck</option>
-                  <option value="Quail">Quail</option>
-                  <option value="Chicken">Chicken</option>
-                  <option value="Brown Rice">Brown Rice</option>
-                  <option value="Quinoa">Quinoa</option>
-                  <option value="Basmati Rice">Basmati Rice</option>
-                  <option value="Butter">Butter</option>
-                  <option value="Olive Oil">Olive Oil</option>
-                  <option value="Sausage">Sausages</option>
-                  <option value="Bacon">Bacon</option>
-                  <option value="Pork Loin">Pork Loin</option>
-                </select>
-              </div>
-              <div class="drinkPair">
-                <select class="dark beerSelect" name="dark">
-                  <option value="">---Select an Ingredient---</option>
-                  <option value="Carrots">Carrots</option>
-                  <option value="Bell Peppers">Bell Peppers</option>
-                  <option value="Mushrooms">Mushrooms</option>
-                  <option value="Broccoli">Broccoli</option>
-                  <option value="Butter">Butter</option>
-                  <option value="Olive Oil">Olive Oil</option>
-                  <option value="Dark Chocolate">Dark Chocolate</option>
-                  <option value="Milk Chocolate">Milk Chocolate</option>
-                </select>
-              </div>
-              <div class="drinkPair">
-                <select class="belgian beerSelect" name="belgian">
-                  <option value="">---Select an Ingredient---</option>
-                  <option value="Brie">Brie</option>
-                  <option value="Cheddar">Cheddar</option>
-                  <option value="Blue Cheese">Blue Cheese</option>
-                  <option value="Mozzarella">Mozzarella</option>
-                  <option value="Goat Cheese">Goat Cheese</option>
-                </select>
-              </div>
-              <div class="drinkPair">
-                <select class="maltySweet beerSelect" name="maltySweet">
-                  <option value="">---Select an Ingredient---</option>
-                  <option value="Dark Chocolate">Dark Chocolate</option>
-                  <option value="Milk Chocolate">Milk Chocolate</option>
-                </select>
-              </div>
-              <div class="drinkPair">
-                <select class="fruitySweet beerSelect" name="fruitySweet">
-                  <option value="">---Select an Ingredient---</option>
-                  <option value="Sausage">Sausage</option>
-                  <option value="Bacon">Bacon</option>
-                  <option value="Pork Loin">Pork Loin</option>
-                </select>
-              </div>
-              <div class="drinkPair">
-                <select class="sweet beerSelect" name="sweet">
-                  <option value="">---Select an Ingredient---</option>
-                  <option value="Cake">Cake</option>
-                  <option value="Ice Cream">Ice Cream</option>
-                </select>
-              </div>
+          </select>
+          <select class="wine wineSelect drinkType form-control" name="wine">
+            <option value="">---Select a Wine Type---</option>
+            <option value="dryWhite">Dry White</option>
+            <option value="sweetWhite">Sweet White</option>
+            <option value="richWhite">Rich White</option>
+            <option value="lightRed">Light Red</option>
+            <option value="mediumRed">Medium Red</option>
+            <option value="boldRed">Bold Red</option>
+          </select>
+        </div>
+        <div class="choicesFromDrink">
+          <div class="beerPair">
+            <div class="drinkPair">
+              <select class="crisp beerSelect form-control" name="crisp">
+                <option value="">---Select an Ingredient---</option>
+                <option value="Brown Rice">Brown Rice</option>
+                <option value="Quinoa">Quinoa</option>
+                <option value="Basmati Rice">Basmati Rice</option>
+              </select>
             </div>
-            <div class="winePair">
-              <div class="drinkPair">
-                <select class="dryWhite wineSelect" name="dryWhite">
-                  <option value="">---Select an Ingredient---</option>
-                  <option value="Goat Cheese">Goat Cheese</option>
-                  <option value="Chicken">Chicken</option>
-                  <option value="Turkey">Turkey</option>
-                  <option value="Shrimp">Shrimp</option>
-                  <option value="Asparagus">Asparagus</option>
-                </select>
-              </div>
-              <div class="drinkPair">
-                <select class="sweetWhite wineSelect" name="sweetWhite">
-                  <option value="">---Select an Ingredient---</option>
-                  <option value="Duck">Duck</option>
-                  <option value="Sea Bass">Sea Bass</option>
-                  <option value="Trout">Trout</option>
-                </select>
-              </div>
-              <div class="drinkPair">
-                <select class="richWhite wineSelect" name="richWhite">
-                  <option value="">---Select an Ingredient---</option>
-                  <option value="Blue Cheese">Blue Cheese</option>
-                  <option value="Veal">Veal</option>
-                  <option value="Crab">Crab</option>
-                  <option value="Squash">Squash</option>
-                </select>
-              </div>
-              <div class="drinkPair">
-                <select class="lightRed wineSelect" name="lightRed">
-                  <option value="">---Select an Ingredient---</option>
-                  <option value="Goat Cheese">Goat Cheese</option>
-                  <option value="Chicken">Chicken</option>
-                  <option value="Lamb">Lamb</option>
-                  <option value="Mushrooms">Mushrooms</option>
-                </select>
-              </div>
-              <div class="drinkPair">
-                <select class="mediumRed wineSelect" name="mediumRed">
-                  <option value="">---Select an Ingredient---</option>
-                  <option value="Cheddar">Cheddar</option>
-                  <option value="Salmon">Salmon</option>
-                  <option value="Pork Belly">Pork Belly</option>
-                  <option value="Beets">Beets</option>
-                </select>
-              </div>
-              <div class="drinkPair">
-                <select class="boldRed wineSelect" name="boldRed">
-                  <option value="">---Select an Ingredient---</option>
-                  <option value="Parmesan">Parmesan</option>
-                  <option value="Beef">Beef</option>
-                  <option value="Ribeye">Ribeye</option>
-                  <option value="Tomatoes">Tomatoes</option>
-                </select>
-              </div>
+            <div class="drinkPair">
+              <select class="maltyFruity beerSelect form-control" name="maltyFruity">
+                <option value="">---Select an Ingredient---</option>
+                <option value="Fava Beans">Fava Beans</option>
+                <option value="Chickpeas">Chickpeas</option>
+                <option value="Green Beans">Green Beans</option>
+                <option value="Clams">Clams</option>
+                <option value="Scallops">Scallops</option>
+                <option value="Lobster">Lobster</option>
+                <option value="Shrimp">Shrimp</option>
+              </select>
+            </div>
+            <div class="drinkPair">
+              <select class="sour beerSelect form-control" name="sour">
+                <option value="">---Select an Ingredient---</option>
+                <option value="Lamb">Lamb</option>
+                <option value="Beef">Beef</option>
+                <option value="Parsnips">Parsnips</option>
+                <option value="Carrots">Carrots</option>
+                <option value="Beets">Beets</option>
+              </select>
+            </div>
+            <div class="drinkPair">
+              <select class="hoppyBitter beerSelect form-control" name="hoppyBitter">
+                <option value="">---Select an Ingredient---</option>
+                <option value="Duck">Duck</option>
+                <option value="Quail">Quail</option>
+                <option value="Chicken">Chicken</option>
+                <option value="Brown Rice">Brown Rice</option>
+                <option value="Quinoa">Quinoa</option>
+                <option value="Basmati Rice">Basmati Rice</option>
+                <option value="Butter">Butter</option>
+                <option value="Olive Oil">Olive Oil</option>
+                <option value="Sausage">Sausages</option>
+                <option value="Bacon">Bacon</option>
+                <option value="Pork Loin">Pork Loin</option>
+              </select>
+            </div>
+            <div class="drinkPair">
+              <select class="dark beerSelect form-control" name="dark">
+                <option value="">---Select an Ingredient---</option>
+                <option value="Carrots">Carrots</option>
+                <option value="Bell Peppers">Bell Peppers</option>
+                <option value="Mushrooms">Mushrooms</option>
+                <option value="Broccoli">Broccoli</option>
+                <option value="Butter">Butter</option>
+                <option value="Olive Oil">Olive Oil</option>
+                <option value="Dark Chocolate">Dark Chocolate</option>
+                <option value="Milk Chocolate">Milk Chocolate</option>
+              </select>
+            </div>
+            <div class="drinkPair">
+              <select class="belgian beerSelect form-control" name="belgian">
+                <option value="">---Select an Ingredient---</option>
+                <option value="Brie">Brie</option>
+                <option value="Cheddar">Cheddar</option>
+                <option value="Blue Cheese">Blue Cheese</option>
+                <option value="Mozzarella">Mozzarella</option>
+                <option value="Goat Cheese">Goat Cheese</option>
+              </select>
+            </div>
+            <div class="drinkPair">
+              <select class="maltySweet beerSelect form-control" name="maltySweet">
+                <option value="">---Select an Ingredient---</option>
+                <option value="Dark Chocolate">Dark Chocolate</option>
+                <option value="Milk Chocolate">Milk Chocolate</option>
+              </select>
+            </div>
+            <div class="drinkPair">
+              <select class="fruitySweet beerSelect form-control" name="fruitySweet">
+                <option value="">---Select an Ingredient---</option>
+                <option value="Sausage">Sausage</option>
+                <option value="Bacon">Bacon</option>
+                <option value="Pork Loin">Pork Loin</option>
+              </select>
+            </div>
+            <div class="drinkPair">
+              <select class="sweet beerSelect form-control" name="sweet">
+                <option value="">---Select an Ingredient---</option>
+                <option value="Cake">Cake</option>
+                <option value="Ice Cream">Ice Cream</option>
+              </select>
             </div>
           </div>
-          <div class="drinkSubmit">
-            <button type="submit" class="btn btn-outline-success" id="drinkBtn">Search for Ingredients</button>
+          <div class="winePair">
+            <div class="drinkPair">
+              <select class="dryWhite wineSelect form-control" name="dryWhite">
+                <option value="">---Select an Ingredient---</option>
+                <option value="Goat Cheese">Goat Cheese</option>
+                <option value="Chicken">Chicken</option>
+                <option value="Turkey">Turkey</option>
+                <option value="Shrimp">Shrimp</option>
+                <option value="Asparagus">Asparagus</option>
+              </select>
+            </div>
+            <div class="drinkPair">
+              <select class="sweetWhite wineSelect form-control" name="sweetWhite">
+                <option value="">---Select an Ingredient---</option>
+                <option value="Duck">Duck</option>
+                <option value="Sea Bass">Sea Bass</option>
+                <option value="Trout">Trout</option>
+              </select>
+            </div>
+            <div class="drinkPair">
+              <select class="richWhite wineSelect form-control" name="richWhite">
+                <option value="">---Select an Ingredient---</option>
+                <option value="Blue Cheese">Blue Cheese</option>
+                <option value="Veal">Veal</option>
+                <option value="Crab">Crab</option>
+                <option value="Squash">Squash</option>
+              </select>
+            </div>
+            <div class="drinkPair">
+              <select class="lightRed wineSelect form-control" name="lightRed">
+                <option value="">---Select an Ingredient---</option>
+                <option value="Goat Cheese">Goat Cheese</option>
+                <option value="Chicken">Chicken</option>
+                <option value="Lamb">Lamb</option>
+                <option value="Mushrooms">Mushrooms</option>
+              </select>
+            </div>
+            <div class="drinkPair">
+              <select class="mediumRed wineSelect form-control" name="mediumRed">
+                <option value="">---Select an Ingredient---</option>
+                <option value="Cheddar">Cheddar</option>
+                <option value="Salmon">Salmon</option>
+                <option value="Pork Belly">Pork Belly</option>
+                <option value="Beets">Beets</option>
+              </select>
+            </div>
+            <div class="drinkPair">
+              <select class="boldRed wineSelect form-control" name="boldRed">
+                <option value="">---Select an Ingredient---</option>
+                <option value="Parmesan">Parmesan</option>
+                <option value="Beef">Beef</option>
+                <option value="Ribeye">Ribeye</option>
+                <option value="Tomatoes">Tomatoes</option>
+              </select>
+            </div>
           </div>
-        </form>
-      </div>
+        </div>
+        <div class="drinkSubmit">
+          <button type="submit" class="btn btn-outline-success" id="drinkBtn">Search for Ingredients</button>
+        </div>
+      </form>
     </div>
   </header>
+
   <main>
+
     <div id="break1">
     </div>
+
     <div id="pairIngredientsDiv">
       <h2 class="text-center hidden" id="ingredientInstruction">Select additional ingredients to include in a recipe</h2>
       <div class="container" id="content">
@@ -259,22 +261,27 @@
         </div>
       </div>
     </div>
+
     <div id="break2">
     </div>
+
     <div id="recipeDiv1">
       <div class="container">
         <div class="row d-flex justify-content-center" id="recipeList1">
         </div>
       </div>
     </div>
+
     <div id="break3">
     </div>
+
     <div id="recipeDiv2">
       <div class="container">
         <div class="row d-flex justify-content-center" id="recipeList2">
         </div>
       </div>
     </div>
+
     <div class="recipeModals">
       <div class="modal fade recipeModal" id="recipePopUp" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
@@ -289,13 +296,16 @@
         </div>
       </div>
     </div>
+
   </main>
+
   <footer class="hidden">
     <div class="container-fluid">
-      <span>Food pairing sugestions provided by Food Pairing API, Recipes provided by Yummly API and Food2Fork API</span>
+      <span id="mobileFooter">Food pairing sugestions provided by Food Pairing API, Recipes provided by Yummly API and Food2Fork API</span>
     </div>
 
   </footer>
+
 </body>
 
 </html>

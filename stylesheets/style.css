@@ -3,34 +3,41 @@
  * Nav
  *
  */
- .navbar {
-   background: #004056;
- }
+
+.navbar {
+  background: #004056;
+}
+
 
 /*
  *
  * Header
  *
  */
+
 form div {
   display: inline-block;
 }
-header  {
+
+header {
   height: 100vh;
   background-image: url(../images/splash.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
+
 .hidden {
   display: none;
 }
+
 
 /*
  *
  * Body
  *
  */
+
 body {
   background: rgb(225, 243, 240);
 }
@@ -65,17 +72,21 @@ body {
 
 #pairIngredientsDiv h2 {
   color: #FFFFCB;
-  font-family: Chapaza, serif;
+  font-family: Biko, serif;
 }
+
+
 /*
  *
  * Recipes
  *
  */
+
 .recipeCard {
   width: 16em;
   margin: 13px;
 }
+
 .card-success {
   background: #2C858D;
   border-color: #2C858D;
@@ -91,6 +102,7 @@ body {
   background-size: cover;
   background-position: center;
 }
+
 #recipeDiv2 {
   background-image: url(../images/recipe4.jpg);
   background-repeat: no-repeat;
@@ -98,21 +110,25 @@ body {
   background-position: center;
 }
 
-#recipeList1 img, #recipeList2 img{
+#recipeList1 img, #recipeList2 img {
   max-width: 254px;
   max-height: 169px;
 }
+
+
 /*
  *
  * Footer
  *
  */
+
 footer {
   height: 60px;
   line-height: 60px;
   background-color: #004056;
-  color: rgba(255,255,255,.5)
+  color: rgba(255, 255, 255, .5)
 }
+
 
 /*
  *
@@ -126,7 +142,7 @@ iframe {
   border: none;
 }
 
-@media (min-width: 576px){
+@media (min-width: 576px) {
   .modal-dialog {
     max-width: 1000px;
   }
@@ -135,25 +151,29 @@ iframe {
 .modal-content {
   background: rgb(225, 243, 240);
 }
- /*
+
+
+/*
   *
   * Button recolor
   *
   */
+
 .btn-outline-success {
   color: #2C858D;
   border-color: #2C858D;
 }
-.btn-outline-success:hover, .btn-outline-success:focus, .btn-outline-success:active, .btn-outline-success.active, .show > .btn-outline-success.dropdown-toggle, .btn-outline-success.focus{
+
+.btn-outline-success:hover, .btn-outline-success:focus, .btn-outline-success:active, .btn-outline-success.active, .show>.btn-outline-success.dropdown-toggle, .btn-outline-success.focus {
   background: #2C858D;
   border-color: #2C858D;
   color: #FFFFCB;
 }
+
 .btn-outline-success:focus, .btn-outline-success.focus {
   -webkit-box-shadow: 0 0 0 2px rgba(44, 133, 142, 0.5);
-          box-shadow: 0 0 0 2px rgba(44, 133, 142, 0.5);
+  box-shadow: 0 0 0 2px rgba(44, 133, 142, 0.5);
 }
-
 
 .btn-success {
   color: #FFFFCB;
@@ -169,7 +189,7 @@ iframe {
 
 .btn-success:focus, .btn-success.focus {
   -webkit-box-shadow: 0 0 0 2px rgba(44, 133, 142, 0.5);
-          box-shadow: 0 0 0 2px rgba(44, 133, 142, 0.5)
+  box-shadow: 0 0 0 2px rgba(44, 133, 142, 0.5)
 }
 
 .btn-success.disabled, .btn-success:disabled {
@@ -177,8 +197,7 @@ iframe {
   border-color: #2C858D;
 }
 
-.btn-success:active, .btn-success.active,
-.show > .btn-success.dropdown-toggle {
+.btn-success:active, .btn-success.active, .show>.btn-success.dropdown-toggle {
   color: #FFFFCB;
   background-color: #247178;
   background-image: none;
@@ -189,15 +208,18 @@ iframe {
   color: #cdcd90;
 }
 
+
 /*
  *
  * Fonts
  *
  */
+
 @font-face {
   font-family: Biko;
   src: url(../fonts/Biko_Regular.otf);
 }
+
 @font-face {
   font-family: Chapaza;
   src: url(../fonts/Chapaza.ttf);
@@ -207,18 +229,41 @@ nav, select, button, footer, #pairIngredients, #recipeList1, #recipeList2 {
   font-family: Biko, sans-serif;
 }
 
+p {
+  font-family: Chapaza, serif
+}
+
+
 /*
  *
  * Mobile
  *
  */
+
 @media screen and (max-device-width: 480px) {
   #recipeDiv1, #recipeDiv2, #pairIngredientsDiv {
     background-image: none;
   }
-  .drinkToPairing {
+  .drinkToPairing, .ingredientToRecipe {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+  #pairIngredientsDiv h2 {
+    color: #004056;
+  }
+  #mobileFooter {
+    display: none;
+  }
+}
+
+
+/*
+ *
+ * Hide elements
+ *
+ */
+
+.hidden {
+  display: none;
 }
