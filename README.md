@@ -1,4 +1,4 @@
-#Drink to Dinner
+Drink to Dinner
 =====
 
 Drink to Dinner is built on the idea that pairing food and drinks is not only one way. People associate paring with eating a food and choosing the right drink for that food. I want users to be able to do the opposite.  Many people have wines stored that they are saving for a special occasion, and they should be able to create a meal based on their drink.
