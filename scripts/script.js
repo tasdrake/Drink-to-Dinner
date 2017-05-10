@@ -162,7 +162,6 @@ $(document).ready(function() {
     const $cardBlock = $('<div class="card-block d-flex p-2 flex-column justify-content-between">');
     const recipeName = recipeData.name;
     const $cardTitle = $('<h4 class="card-text">' + recipeName + '</h4><br>');
-    // const link = recipeData.source.sourceRecipeUrl;
     const link = recipeData.attribution.url;
     const $link = $('<a class="btn btn-success" href="' + link + '" target="_blank" data-toggle="modal" data-target="#recipePopUp">Go to Recipe</button>');
     $cardBlock.append($cardTitle);
