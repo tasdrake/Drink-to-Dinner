@@ -15,7 +15,8 @@
  *
  */
 select {
-  margin-bottom: 8px
+  margin-bottom: 8px;
+  min-width: 204px;
 }
 
 header {
@@ -30,6 +31,9 @@ header {
   max-width: 160px;
 }
 
+#drinkBtn {
+  min-width: 204px;
+}
 
 /*
  *
@@ -74,7 +78,14 @@ body {
   font-family: Biko, serif;
 }
 
+input {
+  margin-bottom: 8px;
+}
 
+.ingredientDivs {
+  display: inline-block;
+  margin: 10px;
+}
 /*
  *
  * Recipes
@@ -265,14 +276,22 @@ p {
   #recipeDiv1, #recipeDiv2, #pairIngredientsDiv {
     background-image: none;
   }
-  .drinkToPairing, .ingredientToRecipe {
+
+  .drinkToPairing {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
+  .ingredientToRecipe {
+    display: flex;
+    flex-direction: column;
+  }
+
   #pairIngredientsDiv h2 {
     color: #004056;
   }
+
   #mobileFooter {
     display: none;
   }
