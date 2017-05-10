@@ -2,7 +2,7 @@ $(document).ready(function() {
   const foodIds = JSON.parse(localStorage.getItem('foodIds'));
 
   listChoice();
-  listChoicebeerOptions();
+  listChoiceBeerOptions();
   listChoiceWineOptions();
   ingredientPairSearch();
   ingredientSelection();
@@ -11,30 +11,30 @@ $(document).ready(function() {
 
   function listChoice() {
     $('.drink').change(function() {
-      const $options = $('.beerAndWine').children().hide();
+      const $options = $('.beerAndWine').children().css('display', 'none');
       const value = $(this).val();
       if (value.length) {
-        $options.filter('.' + value).show();
+        $options.filter('.' + value).css('display', 'block');
       }
     }).trigger('change');
   }
 
-  function listChoicebeerOptions() {
+  function listChoiceBeerOptions() {
     $('.beer').change(function() {
-      const $options = $('.drinkPair').children().hide();
+      const $options = $('.drinkPair').children().css('display', 'none');
       const value = $(this).val();
       if (value.length) {
-        $options.filter('.' + value).show();
+        $options.filter('.' + value).css('display', 'block');
       }
     }).trigger('change');
   }
 
   function listChoiceWineOptions() {
     $('.wine').change(function() {
-      const $options = $('.drinkPair').children().hide();
+      const $options = $('.drinkPair').children().css('display', 'none');
       const value = $(this).val();
       if (value.length) {
-        $options.filter('.' + value).show();
+        $options.filter('.' + value).css('display', 'block');
       }
     }).trigger('change');
   }

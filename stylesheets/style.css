@@ -27,8 +27,8 @@ header {
   background-position: center;
 }
 
-.hidden {
-  display: none;
+#drinkChoice {
+  max-width: 160px;
 }
 
 
@@ -39,7 +39,7 @@ header {
  */
 
 body {
-  background: rgb(225, 243, 240);
+  background: #e1f4f0;
 }
 
 
@@ -149,9 +149,31 @@ iframe {
 }
 
 .modal-content {
-  background: rgb(225, 243, 240);
+  background: rgba(224, 244, 239, 0.9);
 }
 
+
+/*
+  *
+  * About
+  *
+  */
+
+#about {
+  margin-top: 74px;
+  background: rgba(224, 244, 239, 0.9);
+  padding: 30px;
+  padding-bottom: 15px;
+  border-radius: 12px;
+}
+
+#aboutBody {
+  height: 100vh;
+  background-image: url(../images/about.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
 /*
   *
@@ -256,7 +278,13 @@ p {
     display: none;
   }
 }
-
+@media (max-width: 992px) {
+  .drinkToPairing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 
 /*
  *

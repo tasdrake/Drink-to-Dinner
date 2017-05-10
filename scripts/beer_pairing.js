@@ -78,6 +78,7 @@ $(document).ready(function() {
         'Duck': 5709,
         'Sea Bass': 5844,
         'Trout': 2042,
+        'Salmon': 4282,
       },
       richWhite: {
         'Blue Cheese': 1751,
@@ -93,7 +94,6 @@ $(document).ready(function() {
       },
       mediumRed: {
         'Cheddar': 1727,
-        'Salmon': 4282,
         'Pork Belly': 5848,
         'Beets': 135
       },
