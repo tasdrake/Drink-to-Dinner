@@ -14,9 +14,8 @@
  * Header
  *
  */
-
-form div {
-  display: inline-block;
+select {
+  margin-bottom: 8px
 }
 
 header {

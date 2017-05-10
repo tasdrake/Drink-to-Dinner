@@ -11,30 +11,30 @@ $(document).ready(function() {
 
   function listChoice() {
     $('.drink').change(function() {
-      const $options = $('.beerAndWine').children().css('display', 'none');
+      const $options = $('.beerAndWine').children().hide();
       const value = $(this).val();
       if (value.length) {
-        $options.filter('.' + value).css('display', 'block');
+        $options.filter('.' + value).show();
       }
     }).trigger('change');
   }
 
   function listChoiceBeerOptions() {
     $('.beer').change(function() {
-      const $options = $('.drinkPair').children().css('display', 'none');
+      const $options = $('.drinkPair').children().hide();
       const value = $(this).val();
       if (value.length) {
-        $options.filter('.' + value).css('display', 'block');
+        $options.filter('.' + value).show();
       }
     }).trigger('change');
   }
 
   function listChoiceWineOptions() {
     $('.wine').change(function() {
-      const $options = $('.drinkPair').children().css('display', 'none');
+      const $options = $('.drinkPair').children().hide();
       const value = $(this).val();
       if (value.length) {
-        $options.filter('.' + value).css('display', 'block');
+        $options.filter('.' + value).show();
       }
     }).trigger('change');
   }

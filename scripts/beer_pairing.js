@@ -1,5 +1,4 @@
-$(document).ready(function() {
-  const foodIds = {
+const foodIds = {
     beer: {
       crisp: {
         'Brown Rice': 4413,
@@ -105,6 +104,5 @@ $(document).ready(function() {
       }
     }
   };
-  const ids = JSON.stringify(foodIds);
-  localStorage.setItem('foodIds', JSON.stringify(foodIds));
-});
+const ids = JSON.stringify(foodIds);
+localStorage.setItem('foodIds', JSON.stringify(foodIds));
