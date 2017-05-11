@@ -277,8 +277,11 @@ nav, select, button, footer, p, #pairIngredients, #recipeList1, #recipeList2 {
   .ingredientToRecipe {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
-
+  #recipeBtn {
+    min-width: 192px;
+  }
   #pairIngredientsDiv h2 {
     color: #004056;
   }
