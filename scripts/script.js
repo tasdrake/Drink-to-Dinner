@@ -132,6 +132,7 @@ $(document).ready(function() {
       $('#recipeList1').html('');
       $('#recipeList2').html('');
       $('#break3').html('');
+      $('.alert').hide();
       const search1 = $('#ingredientsSearch').val().split(', ').join('+');
       const search2 = $('#ingredientsSearch').val().split(', ').join(',');
       $.getJSON('https://g-yummly.herokuapp.com/v1/api/recipes?&q=' + search1 + '&maxResult=16', data => createRecipes1(data));
@@ -175,6 +176,12 @@ $(document).ready(function() {
     $('#break3').append('<br>');
     for (let i = 0; i < data.recipes.length; i++) {
       recipeInfo2(data, i);
+    }
+    console.log(data);
+    if (data.count === 0) {
+      console.log('second', data);
+      $('#recipeList1').removeClass('navBarFix');
+      $('.alert').show();
     }
   }
 
