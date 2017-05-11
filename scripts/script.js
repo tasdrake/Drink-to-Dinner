@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 $(document).ready(function() {
   const foodIds = JSON.parse(localStorage.getItem('foodIds'));
 
@@ -90,7 +91,7 @@ $(document).ready(function() {
     $('#ingredientsSearch').val(food);
     location.hash = '#pairIngredientsDiv';
     $('#pairIngredientsSearch').prepend('<br><br><br>');
-    $('#pairIngredientsSearch').append('<br><br><br><br>')
+    $('#pairIngredientsSearch').append('<br><br><br><br>');
     $('#recipeSearch').css('display', 'flex');
   }
 
