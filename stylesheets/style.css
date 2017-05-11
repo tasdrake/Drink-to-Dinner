@@ -252,17 +252,8 @@ iframe {
   src: url(../fonts/Biko_Regular.otf);
 }
 
-@font-face {
-  font-family: Chapaza;
-  src: url(../fonts/Chapaza.ttf);
-}
-
-nav, select, button, footer, #pairIngredients, #recipeList1, #recipeList2 {
+nav, select, button, footer, p, #pairIngredients, #recipeList1, #recipeList2 {
   font-family: Biko, sans-serif;
-}
-
-p {
-  font-family: Chapaza, serif
 }
 
 
