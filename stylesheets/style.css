@@ -14,6 +14,7 @@
  * Header
  *
  */
+
 select {
   margin-bottom: 8px;
   min-width: 204px;
@@ -35,6 +36,7 @@ header {
   min-width: 204px;
 }
 
+
 /*
  *
  * Body
@@ -43,6 +45,15 @@ header {
 
 body {
   background: #e1f4f0;
+}
+
+a, a:visited {
+  color: #FFFFCB;
+}
+
+a:hover {
+  color: #cdcd90;
+  text-decoration: none;
 }
 
 
@@ -86,6 +97,8 @@ input {
   display: inline-block;
   margin: 10px;
 }
+
+
 /*
  *
  * Recipes
@@ -185,6 +198,7 @@ iframe {
   background-position: center;
 }
 
+
 /*
   *
   * Button recolor
@@ -267,13 +281,11 @@ nav, select, button, footer, p, #pairIngredients, #recipeList1, #recipeList2 {
   #recipeDiv1, #recipeDiv2, #pairIngredientsDiv {
     background-image: none;
   }
-
   .drinkToPairing {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
   .ingredientToRecipe {
     display: flex;
     flex-direction: column;
@@ -285,11 +297,11 @@ nav, select, button, footer, p, #pairIngredients, #recipeList1, #recipeList2 {
   #pairIngredientsDiv h2 {
     color: #004056;
   }
-
   #mobileFooter {
     display: none;
   }
 }
+
 @media (max-width: 992px) {
   .drinkToPairing {
     display: flex;
@@ -297,6 +309,7 @@ nav, select, button, footer, p, #pairIngredients, #recipeList1, #recipeList2 {
     align-items: center;
   }
 }
+
 
 /*
  *
