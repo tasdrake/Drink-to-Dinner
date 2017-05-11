@@ -91,7 +91,7 @@ $(document).ready(function() {
     location.hash = '#pairIngredientsDiv';
     $('#pairIngredientsSearch').prepend('<br><br><br>');
     $('#pairIngredientsSearch').append('<br><br><br><br>')
-
+    $('#recipeSearch').css('display', 'flex');
   }
 
   function ingredientSelection() {
@@ -151,6 +151,7 @@ $(document).ready(function() {
     }
     setTimeout(function() {
       location.hash = '#recipeList1';
+      $('#recipeList').css('display', 'flex');
     }, 1000);
     $('footer').removeClass('hidden');
     $('.searchMore').removeClass('hidden');
