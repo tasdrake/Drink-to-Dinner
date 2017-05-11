@@ -36,6 +36,9 @@ header {
   min-width: 204px;
 }
 
+select, button {
+  cursor: pointer;
+}
 
 /*
  *
