@@ -179,9 +179,7 @@ $(document).ready(function() {
     for (let i = 0; i < data.recipes.length; i++) {
       recipeInfo2(data, i);
     }
-    console.log(data);
     if (data.count === 0) {
-      console.log('second', data);
       $('#recipeList1').removeClass('navBarFix');
       $('.alert').show();
     }
