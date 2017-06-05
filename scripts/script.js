@@ -50,7 +50,7 @@ $(document).ready(function() {
       const drink = $('.beerSelect').val() || $('.wineSelect').val();
       const food = $('.' + drink).val();
       const id = foodIds[type][drink][food];
-      $.getJSON('https://g-foodpairing.herokuapp.com/ingredients/' + id + '/pairings?order=random', data => createIngredients(data, food));
+      $.getJSON('http://g-foodpairing.herokuapp.com/ingredients/' + id + '/pairings?order=random', data => createIngredients(data, food));
     });
   }
 
@@ -136,8 +136,8 @@ $(document).ready(function() {
       $('.alert').hide();
       const search1 = $('#ingredientsSearch').val().split(', ').join('+');
       const search2 = $('#ingredientsSearch').val().split(', ').join(',');
-      $.getJSON('https://g-yummly.herokuapp.com/v1/api/recipes?&q=' + search1 + '&maxResult=16', data => createRecipes1(data));
-      $.getJSON('https://g-food2fork.herokuapp.com/api/search?&q=' + search2, data => createRecipes2(data));
+      $.getJSON('http://g-yummly.herokuapp.com/v1/api/recipes?&q=' + search1 + '&maxResult=16', data => createRecipes1(data));
+      $.getJSON('http://g-food2fork.herokuapp.com/api/search?&q=' + search2, data => createRecipes2(data));
     });
   }
 
@@ -148,7 +148,7 @@ $(document).ready(function() {
 
     for (let i = 0; i < data.matches.length; i++) {
       const id = data.matches[i].id;
-      $.getJSON('https://g-yummly.herokuapp.com/v1/api/recipe/' + id, recipeData => recipeInfo1(recipeData));
+      $.getJSON('http://g-yummly.herokuapp.com/v1/api/recipe/' + id, recipeData => recipeInfo1(recipeData));
     }
     setTimeout(function() {
       location.hash = '#recipeList1';
