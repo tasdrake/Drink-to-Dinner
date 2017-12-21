@@ -11,7 +11,7 @@ $(document).ready(function() {
   recipeModals();
 
   function listChoice() {
-    $('.drink').change(function() {
+    $('.drink').change(() => {
       const $options = $('.beerAndWine').children().hide();
       const value = $(this).val();
       if (value.length) {
@@ -21,7 +21,7 @@ $(document).ready(function() {
   }
 
   function listChoiceBeerOptions() {
-    $('.beer').change(function() {
+    $('.beer').change(() => {
       const $options = $('.drinkPair').children().hide();
       const value = $(this).val();
       if (value.length) {
@@ -31,7 +31,7 @@ $(document).ready(function() {
   }
 
   function listChoiceWineOptions() {
-    $('.wine').change(function() {
+    $('.wine').change(() => {
       const $options = $('.drinkPair').children().hide();
       const value = $(this).val();
       if (value.length) {
@@ -41,7 +41,7 @@ $(document).ready(function() {
   }
 
   function ingredientPairSearch() {
-    $('#drinkBtn').click(function(event) {
+    $('#drinkBtn').click((event) => {
       event.preventDefault();
       $('#pairIngredients').html('');
       $('#ingredientsSearch').val('');
@@ -96,7 +96,7 @@ $(document).ready(function() {
   }
 
   function ingredientSelection() {
-    $('#pairIngredients').click(function(event) {
+    $('#pairIngredients').click((event) => {
       const ingredient = $('#ingredientsSearch');
       const $twoParents = $(event.target).parent().parent();
       const $oneParents = $(event.target).parent();
@@ -128,7 +128,7 @@ $(document).ready(function() {
   }
 
   function recipeSearch() {
-    $('#recipeBtn').click(function(event) {
+    $('#recipeBtn').click((event) => {
       event.preventDefault();
       $('#recipeList1').html('');
       $('#recipeList2').html('');
@@ -150,7 +150,7 @@ $(document).ready(function() {
       const id = data.matches[i].id;
       $.getJSON('http://g-yummly.herokuapp.com/v1/api/recipe/' + id, recipeData => recipeInfo1(recipeData));
     }
-    setTimeout(function() {
+    setTimeout(() => {
       location.hash = '#recipeList1';
       $('#recipeList').css('display', 'flex');
     }, 1000);
@@ -202,12 +202,12 @@ $(document).ready(function() {
   }
 
   function recipeModals() {
-    $('#recipeList1').click(function(event) {
+    $('#recipeList1').click((event) => {
       if ($(event.target).hasClass('btn btn-success')) {
         createModal(event);
       }
     });
-    $('#recipeList2').click(function(event) {
+    $('#recipeList2').click((event) => {
       if ($(event.target).hasClass('btn btn-success')) {
         createModal(event);
       }
